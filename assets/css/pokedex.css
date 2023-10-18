@@ -1,8 +1,8 @@
 .pokemons {
-    display: grid;
-    grid-template-columns: 1fr;
-    margin: 0;
-    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px; /* Espaçamento entre os cards */
     list-style: none;
 }
 
@@ -78,12 +78,41 @@
     background-color: #f9aec7;
 }
 
+
+#modalContainer {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+#modalContent {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.modal img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+
 .pokemon {
     display: flex;
     flex-direction: column;
-    margin: .5rem;
-    padding: 1rem;
-    border-radius: 1rem;
+    margin: 0;
+    padding: 2vw;
+    border-radius: 5%;
+    width: calc(33.33% - 20px); /* Para 3 colunas com espaçamento entre elas */
+    max-width: 300px;
+    box-sizing: border-box; /* Considerar padding e borda dentro do width */
 }
 
 .pokemon .number {
@@ -146,17 +175,23 @@
     border-radius: 1rem;
 }
 
-@media screen and (min-width: 380px) {
-    .pokemons {
-        grid-template-columns: 1fr 1fr;
+.pokemon-card {
+    /* Adicione a propriedade cursor para indicar que é clicável */
+    cursor: pointer;
+}
+
+@media screen and (max-width: 992px) {
+    .pokemon {
+        width: calc(50% - 20px); /* Para 2 colunas com espaçamento entre elas */
     }
 }
 
-@media screen and (min-width: 576px) {
-    .pokemons {
-        grid-template-columns: 1fr 1fr 1fr;
+@media screen and (max-width: 576px) {
+    .pokemon {
+        width: 100%; /* Para 1 coluna ocupando toda a largura */
     }
 }
+
 
 @media screen and (min-width: 992px) {
     .pokemons {
